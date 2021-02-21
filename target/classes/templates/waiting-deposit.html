@@ -1,0 +1,52 @@
+<script th:inline="javascript">
+        /*<![CDATA[*/
+
+        $(document).ready(function() {
+            let orderId = /*[[${orderid}]]*/'default';
+            let url = /*[[${url}]]*/'default';
+
+            getStatusOrder();
+            function getStatusOrder() {
+                $.ajax({
+                    type : "GET",
+                    url : "api/get-status-order/" + orderId,
+                    dataType : "json",
+                    success : function(order) {
+                        let type = "failure";
+                        if (order.status == "OK") {
+                            type = "success";
+                        }
+                        document.getElementById("iframe-trustly").style.height = "200px";
+                        $('#response-payment').load("get-fragment/" + type);
+                    },
+                    error : function() {
+                        setTimeout(function() {
+                            getStatusOrder();
+                        }, 5000)
+                    }
+                });
+            }
+
+        });
+        /*]]>*/
+    </script>
+
+<div class="py-4 text-center">
+	<a href="/trustly-integration/">
+		<img class="d-block mx-auto mb-4" th:src="@{/img/Trustly_logo.png}" width="100" alt="" />
+	</a>
+	<h2>Trustly Payment</h2>
+</div>
+
+<div class="g-3 text-center">
+	<div id="response-payment" class="row justify-content-md-center py-1">
+		<div id="loading-div" class="d-flex justify-content-center col-md-4">
+			<div class="spinner-grow" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+			<p style="margin-left: 10px;">Waiting for payment...</p>
+		</div>
+	</div>
+	<iframe id="iframe-trustly" th:src="${url}"
+		style="height: 500px; width: 600px;" title="Trustly Payment"></iframe>
+</div>

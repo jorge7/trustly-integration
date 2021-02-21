@@ -1,0 +1,15 @@
+server:
+  servlet:
+    context-path: /trustly-integration
+
+trustly: 
+  test-environment: true
+  notification-url: ${TRUSTLYNOTIFICATIONURL}
+  username: ${TRUSTLYUSER}
+  password: ${TRUSTLYPASSWORD}
+  private-key-path: ${PRIVATEKEYPATH}
+
+redis:
+  host: ${REDISHOST}
+  port: ${REDISPORT}
+  password: ${REDISPASSWORD}

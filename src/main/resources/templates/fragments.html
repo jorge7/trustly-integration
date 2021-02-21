@@ -1,0 +1,30 @@
+<div th:fragment="success" class="row justify-content-md-center py-1">
+	<div class="d-flex justify-content-center col-md-6">
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<h4 class="alert-heading"><img th:src="@{/img/check-circle.svg}" alt=""/> Payment successful!</h4>
+			<p>Your payment has been processed correctly, please check your credit account.</p>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	</div>
+</div>
+<div th:fragment="failure">
+	<div class="col-md-4">
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			<h4 class="alert-heading"><img th:src="@{/img/x-circle.svg}" alt=""/> Your payment failed!</h4>
+			<p>Please try again.</p>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	</div>
+</div>
+
+<div th:fragment="footer">
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+		<p class="mb-1">&copy; 2021 Bambora</p>
+		<ul class="list-inline">
+			<li class="list-inline-item"><a href="#">Privacy</a></li>
+			<li class="list-inline-item"><a href="#">Terms</a></li>
+			<li class="list-inline-item"><a href="#">Support</a></li>
+		</ul>
+	</footer>
+</div>
